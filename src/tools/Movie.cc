@@ -139,7 +139,7 @@ bool Movie::loadNextFrame( cBitmap & b ){
 		if(packet.stream_index==videoStream && packet.flags == AV_PKT_FLAG_KEY ) {													//Is this a packet from the video stream?
 			avcodec_decode_video2(pCodecCtx, pFrame, &frameFinished, &packet );					//Decode video frame
 
-			if(pFrame->pict_type != FF_I_TYPE )													//Added: If this is not an I-Frame, skip it
+			if(pFrame->pict_type != AV_PICTURE_TYPE_I )								//Added: If this is not an I-Frame, skip it
 				continue;
       
 			//If we got a frame, convert it to RGB and save it.

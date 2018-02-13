@@ -39,7 +39,7 @@ int cBitmap::loadBitmap( char * filename ){
 
  file.open( filename, fstream::in|fstream::binary|fstream::ate );
 
- if( file == NULL ){
+ if( !file.is_open() ){
   fprintf( stderr, "Could not open file %s\n", filename );
   return -1;
  }
@@ -206,7 +206,7 @@ int cBitmap::saveBitmap( char * filename ){
  fstream output;
  output.open( filename, fstream::out|fstream::binary );
 
- if( output == NULL ){
+ if( !output.is_open() ){
    fprintf( stderr, "Could not open file (writeToFile)!\n" );
    exit(1);
  }
